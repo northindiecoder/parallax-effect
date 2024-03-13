@@ -1,0 +1,264 @@
+<!--
+========================== NOTE ==========================
+  This is an old post. I've made a new and easier parallax scrolling effect with images as backgrounds.
+
+  Check it here: https://codepen.io/nikkz/pen/qZJKqG
+-->
+
+<div class="first-wrap">
+    <div class="first-div">
+      
+      <div class="first-inner-div">
+        <p>Start Scrolling</p>
+        <a href="#anchor">
+          <span class="glyphicon glyphicon-circle-arrow-down down-arrow"></span>
+        </a>      
+      </div>
+    </div>
+  </div>
+  
+  <div class="second-wrap">
+    <div class="second-div" id="anchor">
+      <p class="body-text">
+        <span class="line-separator"></span> Sample parallax with different background images
+        <span class="line-separator"></span>
+      </p>
+    </div>
+    <div class="third-div">
+    </div>
+  </div>
+  
+  <div class="third-wrap">
+    <div class="fourth-div">
+      <p class="body-text">
+        <span class="line-separator"></span> Sample parallax with different background images
+        <span class="line-separator"></span>
+      </p>
+    </div>
+    <div class="fifth-div">
+    </div>
+  </div>
+  
+  <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+
+  <style>
+
+    /* Hides the horizontal overflow */
+
+body {
+  overflow-x: hidden;
+}
+/* Resize in Mobile View */
+
+@media (min-width: 0) and (max-width: 767px) {
+  p, .body-text {
+    font-size: 10px !important;
+  }
+  .down-arrow {
+    font-size: 20px !important;
+  }
+}
+/* Resize in Tablet View */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  p, .body-text {
+    font-size: 15px !important;
+  }
+  .down-arrow {
+    font-size: 30px !important;
+  }
+}
+/* Line Separators CSS */
+
+.line-separator {
+  display: block;
+  width: 50%;
+  height: 1px;
+  text-align: center;
+  margin: 20px auto;
+  border-bottom: 1px solid grey;
+}
+/* First Wrap Background */
+
+.first-wrap {
+  height: 100%;
+  width: 100vw;
+  background: #ffffff url("https://images.unsplash.com/photo-1445251836269-d158eaa028a6?fit=crop&fm=jpg&h=950&q=80&w=1920") no-repeat fixed;
+   background-size: cover;
+   background-position: 50% 50%;
+}
+/* Second Wrap Background */
+
+.second-wrap {
+  height: 100%;
+  width: 100vw;
+  background: #ffffff url("https://images.unsplash.com/photo-1444090542259-0af8fa96557e?fit=crop&fm=jpg&h=950&q=80&w=1920") no-repeat fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+/* Third Wrap Background */
+
+.third-wrap {
+  height: 100%;
+  width: 100vw;
+  background: #ffffff url("https://images.unsplash.com/photo-1443827423664-eac70d49dd0d?fit=crop&fm=jpg&h=950&q=80&w=1920") no-repeat fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.first-div {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  .first-inner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    .down-arrow {
+      font-size: 40px;
+      color: #fff;
+    }
+    p {
+      padding: 20px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.second-div {
+  display: table;
+  height: 50vh;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+  }
+}
+
+.third-div {
+  display: table;
+  height: 50vh;
+  width: 100vw;
+  background-color: transparent;
+}
+
+.fourth-div {
+  display: table;
+  height: 50vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+  }
+}
+
+.fifth-div {
+  display: table;
+  height: 50vh;
+  width: 100vw;
+  background-color: transparent;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  line-height: 30px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+}
+
+#back-to-top:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+#back-to-top.show {
+  opacity: 1;
+}
+
+
+
+/* NEW UPDATE */
+.new-update {
+  padding: 20px;
+  text-align: center;
+  
+}
+  </style>
+
+  <script>
+
+    /*
+  jQuery codes for smooth scrolling. The following code is from
+  https://css-tricks.com/snippets/jquery/smooth-scrolling/
+*/
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 700);
+        return false;
+      }
+    }
+  });
+});
+
+/*
+  Back to top scroll button. The following code is from
+  http://jsfiddle.net/gilbitron/Lt2wH/
+*/
+if ($('#back-to-top').length) {
+  var scrollTrigger = 100, // px
+    backToTop = function() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > scrollTrigger) {
+        $('#back-to-top').addClass('show');
+      } else {
+        $('#back-to-top').removeClass('show');
+      }
+    };
+  backToTop();
+  $(window).on('scroll', function() {
+    backToTop();
+  });
+  $('#back-to-top').on('click', function(e) {
+    e.preventDefault();
+    $('html,body').animate({
+      scrollTop: 0
+    }, 700);
+  });
+}
+  </script>
